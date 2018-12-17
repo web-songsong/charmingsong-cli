@@ -11,7 +11,7 @@
   "license": "ISC",
   "bin": {
     "song": "bin/command.js",
-    "song-init": "bin/song-init"
+    "song-init": "bin/xs-init.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",
