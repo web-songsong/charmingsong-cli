@@ -10,10 +10,7 @@ const rm = require('rimraf').sync
 const path = require('path')
 const exists = require('fs').existsSync
 
-const {
-  isLocalPath,
-  getTemplatePath
-} = require('../lib/local-path')
+const { isLocalPath, getTemplatePath } = require('../lib/local-path')
 const logger = require('../lib/logger')
 const generate = require('../lib/generate')
 const checkVersion = require('../lib/check-version')
@@ -43,17 +40,20 @@ function tmpName(tem) {
 }
 const tmpPath = path.join(
   home,
-  '.song-cli-template',
+  '.xs-cli-template',
   template.replace(/[\/:]/g, '-')
 )
 if (isPlace || exists(to)) {
   inquirer
-    .prompt([{
-      type: 'confirm',
-      message: isPlace ?
-        'Generate project in current directory' : 'Target directory exists. Continue?',
-      name: 'ok'
-    }])
+    .prompt([
+      {
+        type: 'confirm',
+        message: isPlace
+          ? 'Generate project in current directory'
+          : 'Target directory exists. Continue?',
+        name: 'ok'
+      }
+    ])
     .then(answers => {
       if (answers.ok) {
         // 确认安装
@@ -84,27 +84,23 @@ function run() {
 function downloadAndGenerate(tem) {
   const spinner = ora('downloading template')
   spinner.start()
-  if (exists(tmpPath)) {
-    rm(tmpPath)
-    spinner
-      .stopAndPersist({
-        symbol: '☹️',
-        text: 'delete cache'
-      })
-      .start()
-  }
-  gitDonwload(tmpName(tem), tmpPath, {
-    clone: true
-  }, err => {
-    spinner.stopAndPersist({
-      symbol: '🙃',
-      text: 'download template'
-    })
-    if (err) {
-      logger.fatal('Failed to download repo ' + tem + ': ' + err.message.trim())
+  if (exists(tmpPath)) rm(tmpPath)
+  gitDonwload(
+    tmpName(tem),
+    tmpPath,
+    {
+      clone: true
+    },
+    err => {
+      spinner.stop()
+      if (err) {
+        logger.fatal(
+          'Failed to download repo ' + tem + ': ' + err.message.trim()
+        )
+      }
+      generate()
+      console.log()
+      logger.success('Generated "%s".', tem)
     }
-    generate()
-    console.log()
-    logger.success('Generated "%s".', tem)
-  })
+  )
 }

@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "song": "bin/command.js",
-    "song-init": "bin/xs-init.js"
+    "xs": "bin/command.js",
+    "xs-init": "bin/xs-init.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",
