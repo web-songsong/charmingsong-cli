@@ -1,1 +1,1 @@
-# song-cli
+# xs-cli
