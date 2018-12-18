@@ -98,9 +98,11 @@ function downloadAndGenerate(tem) {
           'Failed to download repo ' + tem + ': ' + err.message.trim()
         )
       }
-      generate()
-      console.log()
-      logger.success('Generated "%s".', tem)
+      generate(tem, tmpPath, to, err => {
+        if (err) logger.fatal(err)
+        console.log()
+        logger.success('Generated "%s".', tem)
+      })
     }
   )
 }
