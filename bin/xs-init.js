@@ -33,16 +33,18 @@ help()
 let template = commander.args[0],
   projectName = commander.args[1]
 const isPlace = !projectName || projectName === '.'
+const name = isPlace ? path.relative('..', process.cwd()) : projectName
 const to = path.resolve(projectName || '.')
 
-function tmpName(tem) {
+function githubTmp(tem) {
   return `web-songsong/${tem}`
 }
-const tmpPath = path.join(
+const tmpRoot = path.join(
   home,
   '.xs-cli-template',
   template.replace(/[\/:]/g, '-')
 )
+
 if (isPlace || exists(to)) {
   inquirer
     .prompt([
@@ -81,13 +83,21 @@ function run() {
   }
 }
 
-function downloadAndGenerate(tem) {
+function downloadAndGenerate(template) {
   const spinner = ora('downloading template')
   spinner.start()
-  if (exists(tmpPath)) rm(tmpPath)
+  // if (exists(tmpRoot)) rm(tmpRoot)
+
+  if (exists(tmpRoot)) {
+    spinner.stop()
+    return generate(name, tmpRoot, to, err => {
+      if (err) logger.fatal(err)
+      logger.success('Generated "%s".', name)
+    })
+  }
   gitDonwload(
-    tmpName(tem),
-    tmpPath,
+    githubTmp(template),
+    tmpRoot,
     {
       clone: true
     },
@@ -98,9 +108,10 @@ function downloadAndGenerate(tem) {
           'Failed to download repo ' + tem + ': ' + err.message.trim()
         )
       }
-      generate()
-      console.log()
-      logger.success('Generated "%s".', tem)
+      generate(name, tmpRoot, to, err => {
+        if (err) logger.fatal(err)
+        logger.success('Generated "%s".', name)
+      })
     }
   )
 }
