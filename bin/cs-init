@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const prompt = require('inquirer').createPromptModule()
+const { initMeta: meta } = require('../lib/prompt-init')
+
+prompt(meta).then(answers => {
+  console.log(answers)
+})

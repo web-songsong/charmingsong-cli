@@ -1,0 +1,31 @@
+{
+  "name": "charmingsong-cli",
+  "version": "1.0.0",
+  "description": "vue cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cs": "bin/cs",
+    "cs-init": "bin/cs-init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-songsong/charmingsong-cli.git"
+  },
+  "keywords": [
+    "vue",
+    "cli"
+  ],
+  "author": "charmingsong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/web-songsong/charmingsong-cli/issues"
+  },
+  "homepage": "https://github.com/web-songsong/charmingsong-cli#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.1"
+  }
+}
