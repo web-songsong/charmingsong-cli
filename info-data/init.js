@@ -1,4 +1,4 @@
-const initMeta = [
+module.exports = [
   {
     type: 'list',
     message: '选择模板',
@@ -15,7 +15,3 @@ const initMeta = [
     }
   }
 ]
-
-module.exports = {
-  initMeta
-}

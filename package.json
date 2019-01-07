@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/web-songsong/charmingsong-cli#readme",
   "dependencies": {
+    "chilk": "^1.0.0",
     "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
     "inquirer": "^6.2.1"
   }
 }

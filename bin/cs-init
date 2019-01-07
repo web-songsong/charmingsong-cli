@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
 const prompt = require('inquirer').createPromptModule()
-const { initMeta: meta } = require('../lib/prompt-init')
+const { downloadtemplate } = require('../lib/util')
 
+const { initMeta: meta } = require('../lib/prompt')
 prompt(meta).then(answers => {
-  console.log(answers)
+  run(answers)
 })
+
+function run({ template, name }) {
+  downloadtemplate(template)
+}
