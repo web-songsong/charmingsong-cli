@@ -2,10 +2,7 @@
   "name": "charmingsong-cli",
   "version": "1.0.0",
   "description": "vue cli",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "bin": {
     "cs": "bin/cs",
     "cs-init": "bin/cs-init"
@@ -28,6 +25,7 @@
     "chilk": "^1.0.0",
     "commander": "^2.19.0",
     "download-git-repo": "^1.1.0",
-    "inquirer": "^6.2.1"
+    "inquirer": "^6.2.1",
+    "ora": "^3.0.0"
   }
 }
