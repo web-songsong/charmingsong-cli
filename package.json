@@ -1,8 +1,10 @@
 {
   "name": "charmingsong-cli",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "vue cli",
-  "scripts": {},
+  "scripts": {
+    "test": "node bin/cs-init"
+  },
   "bin": {
     "cs": "bin/cs",
     "cs-init": "bin/cs-init"
@@ -15,7 +17,7 @@
     "vue",
     "cli"
   ],
-  "author": "charmingsong",
+  "author": "huxuesong",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/web-songsong/charmingsong-cli/issues"
