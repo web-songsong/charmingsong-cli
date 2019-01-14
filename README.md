@@ -11,8 +11,9 @@ $ npm install -g charmingsong-cli
 ## 使用
 
 ```bash
-$ vue init
+$ cs init
 ```
 
-然后根据提示进行后续操作
+模板类型是根据[github](https://github.com/web-songsong)纪录的模板类型
 
+版本（初版）
