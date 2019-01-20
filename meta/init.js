@@ -8,6 +8,12 @@ module.exports = {
     },
     {
       type: 'input',
+      message: '项目名称',
+      name: 'projectName',
+      default: 'myProject'
+    },
+    {
+      type: 'input',
       message: '简介',
       name: 'description'
     },
@@ -16,11 +22,6 @@ module.exports = {
       message: '版本号',
       default: '0.0.1',
       name: 'version'
-    },
-    {
-      type: 'input',
-      message: '关键字',
-      name: 'keywords'
     }
   ]
 }
