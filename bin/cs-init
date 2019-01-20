@@ -7,8 +7,9 @@ prompt(meta.prompts).then(answers => {
   run(answers)
 })
 
-function run({ template }) {
+function run(answers) {
+  const { template } = answers
   downloadtemplate(template).then(dir => {
-    otputTemplate(dir, prompt)
+    otputTemplate(dir, prompt, answers)
   })
 }

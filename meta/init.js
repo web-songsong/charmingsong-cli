@@ -5,15 +5,22 @@ module.exports = {
       message: '选择模板',
       choices: ['xs-templates', 'manage-system', 'blogProject'],
       name: 'template'
+    },
+    {
+      type: 'input',
+      message: '简介',
+      name: 'description'
+    },
+    {
+      type: 'input',
+      message: '版本号',
+      default: '0.0.1',
+      name: 'version'
+    },
+    {
+      type: 'input',
+      message: '关键字',
+      name: 'keywords'
     }
-    // {
-    //   type: 'input',
-    //   message: '项目名称(英文)',
-    //   name: 'name',
-    //   validate(val) {
-    //     if (/^\w+$/.test(val)) return true
-    //     return '英文!!!'
-    //   }
-    // }
   ]
 }
