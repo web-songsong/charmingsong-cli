@@ -3,6 +3,7 @@
 const prompt = require('inquirer').createPromptModule()
 const { downloadtemplate, otputTemplate } = require('../lib/util')
 const { initMeta: meta } = require('../lib/prompt')
+
 prompt(meta.prompts).then(answers => {
   run(answers)
 })
