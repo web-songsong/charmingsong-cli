@@ -27,7 +27,7 @@
     "chilk": "^1.0.0",
     "commander": "^2.19.0",
     "download-git-repo": "^1.1.0",
-    "handlebars": "^4.0.12",
+    "handlebars": "^4.1.2",
     "inquirer": "^6.2.1",
     "metalsmith": "^2.3.0",
     "ora": "^3.0.0",
