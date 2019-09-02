@@ -27,21 +27,20 @@ const prefix = package_info.name
 
 // export { fatal }
 
-interface Log {
-  fatal(str: any): void
-  cuccess(): void
+// class Logger implements Log {
+//   constructor() {
+//     console.log('log1111')
+//   }
+// }
+declare namespace local{
+  class Command 
+}
+declare namespace logger {
+  type Command = local.Command
+  interface tool extends Command {
+    fatal(): void
+  }
 }
 
-class Logger implements Log {
-  constructor() {
-    console.log('log1111')
-  }
-  fatal(str: string): void {
-    console.log(str)
-  }
-  cuccess(): void {
-    throw new Error('Method not implemented.')
-  }
-}
-
-export = new Logger()
+declare const logger: logger.tool
+export = logger
