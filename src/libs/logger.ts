@@ -6,7 +6,6 @@ import * as package_info from '../../package.json'
 
 const prefix = package_info.name
 // const { gray, white, red, green } = <any>chalk
-
 // const sep = gray('·')
 
 // const log = (...args: any) => {
