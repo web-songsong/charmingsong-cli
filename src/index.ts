@@ -1,12 +1,14 @@
+#!/usr/bin/env node
 import * as program from 'commander'
 
 import * as package_info from '../package.json'
 
 import * as prompt from './libs/inquirer'
 
-import { log } from './libs/logger'
+import Logger = require('./libs/logger')
+Logger.fatal()
 
-console.log(log)
+// console.log(log)
 // // program.version(package_info.version, '-v, --version')
 // // program
 // //   .command('init <template> [otherDirs...]')
@@ -16,4 +18,4 @@ console.log(log)
 
 // // program.parse(process.argv)
 
-console.log('xxxx111112312313213')
+console.log('=======')
