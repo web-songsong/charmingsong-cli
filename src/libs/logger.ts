@@ -1,12 +1,12 @@
 import * as chalk from 'chalk'
 import * as util from 'util'
-// const { format } = util
+const { format } = util
 import * as package_info from '../../package.json'
-// console.log(format)
+console.log(format)
 
 const prefix = package_info.name
-// const { gray, white, red, green } = <any>chalk
-// const sep = gray('·')
+const { gray, white, red, green } = <any>chalk
+const sep = gray('·')
 
 // const log = (...args: any) => {
 //   console.log()
@@ -25,22 +25,8 @@ const prefix = package_info.name
 //   console.log(green(prefix), sep, format(...args))
 // }
 
-// export { fatal }
-
-// class Logger implements Log {
-//   constructor() {
-//     console.log('log1111')
-//   }
-// }
-declare namespace local{
-  class Command 
-}
-declare namespace logger {
-  type Command = local.Command
-  interface tool extends Command {
-    fatal(): void
-  }
+const log = () => {
+  console.log('asdfa')
 }
 
-declare const logger: logger.tool
-export = logger
+export { log }

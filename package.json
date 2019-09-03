@@ -3,8 +3,9 @@
   "version": "1.1.1",
   "description": "vue cli",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
+    "build:tsc": "tsc",
+    "build": "webpack",
+    "dev": "webpack -w ",
     "prepare": "npm run build"
   },
   "bin": {
@@ -28,9 +29,13 @@
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.2",
+    "awesome-typescript-loader": "^5.2.1",
     "chalk": "^2.4.2",
     "commander": "^3.0.0",
     "inquirer": "^6.5.1",
-    "typescript": "^3.5.3"
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.6.2",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   }
 }
