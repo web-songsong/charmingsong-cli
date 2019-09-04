@@ -1,7 +1,7 @@
 {
   "name": "charmingsong-cli",
-  "version": "1.1.1",
-  "description": "vue cli",
+  "version": "2.0.0",
+  "description": "cli",
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w ",
@@ -14,9 +14,11 @@
     "type": "git",
     "url": "git+https://github.com/web-songsong/charmingsong-cli.git"
   },
+  "main": {},
   "keywords": [
-    "vue",
-    "cli"
+    "cli",
+    "node",
+    "typescript"
   ],
   "author": "huxuesong",
   "license": "ISC",
