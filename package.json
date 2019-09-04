@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w ",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "npm:publish": "npm publish --registry  \"https://registry.npmjs.org/\""
   },
   "bin": {
     "cs": "bin/index.js"
