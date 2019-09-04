@@ -3,10 +3,12 @@ import * as program from 'commander'
 import * as path from 'path'
 import { existsSync } from 'fs'
 import * as package_info from '../package.json'
-import * as metaInit from '../meta/init.json'
 import { handlePrompt } from './libs/inquirer'
-import { downLoadtempalte, otputTemplate } from './libs/utils'
+import { downLoadtempalte, otputTemplate, getMetaJson } from './libs/utils'
 import Logger = require('./libs/logger')
+
+const githubMateUrl =
+  'https://raw.githubusercontent.com/web-songsong/charmingsong-cli/master_meta/meta.json'
 
 program.version(package_info.version, '-v, --version')
 program
@@ -25,6 +27,7 @@ if (!process.argv.slice(2).length) {
 }
 
 async function main() {
+  const metaInit = await getMetaJson(githubMateUrl)
   /* 获取meta信息 */
   const metaInfoBase: any = await handlePrompt(metaInit)
 

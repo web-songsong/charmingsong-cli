@@ -4,7 +4,7 @@ import * as ora from 'ora'
 import * as userHome from 'user-home'
 import * as Handlebars from 'handlebars'
 import * as Metalsmith from 'metalsmith'
-
+import axios from 'axios'
 import Logger = require('./logger')
 
 /**
@@ -33,6 +33,14 @@ export function downLoadtempalte(template: string) {
   })
 }
 
+/**
+ * 写入模板文件
+ *
+ * @export
+ * @param {string} temsPath
+ * @param {*} metainfo
+ * @returns
+ */
 export function otputTemplate(temsPath: string, metainfo: any) {
   return new Promise((resolve, reject) => {
     Metalsmith(process.cwd())
@@ -43,7 +51,6 @@ export function otputTemplate(temsPath: string, metainfo: any) {
       .use((files: any, metalsmith: any, done: () => void) => {
         Object.keys(files).forEach(fileName => {
           const str = files[fileName].contents.toString()
-          console.log('metalsmith.metadata()', metalsmith.metadata())
           files[fileName].contents = new Buffer(
             Handlebars.compile(str)(metalsmith.metadata())
           )
@@ -56,5 +63,20 @@ export function otputTemplate(temsPath: string, metainfo: any) {
         }
         resolve(true)
       })
+  })
+}
+
+/**
+ * 发送请求, 获取最新的mate
+ *
+ * @export
+ * @param {string} url
+ * @returns {*}
+ */
+export function getMetaJson(url: string): any {
+  return new Promise((resolve, reject) => {
+    axios.get(url).then(res => {
+      resolve(res)
+    })
   })
 }
