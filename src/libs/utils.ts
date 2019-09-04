@@ -52,7 +52,7 @@ export function otputTemplate(temsPath: string, metainfo: any) {
       .use((files: any, metalsmith: any, done: () => void) => {
         Object.keys(files).forEach(fileName => {
           const str = files[fileName].contents.toString()
-          files[fileName].contents = new Buffer(
+          files[fileName].contents = Buffer.from(
             Handlebars.compile(str)(metalsmith.metadata())
           )
         })
