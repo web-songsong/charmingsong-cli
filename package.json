@@ -1,6 +1,6 @@
 {
   "name": "charmingsong-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "cli",
   "scripts": {
     "build": "tsc",
@@ -15,7 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/web-songsong/charmingsong-cli.git"
   },
-  "main": {},
   "keywords": [
     "cli",
     "node",
@@ -30,16 +29,17 @@
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "^6.5.0",
-    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.6.2"
+  },
+  "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
-    "commander": "^3.0.0",
+    "commander": "^3.0.1",
     "download-git-repo": "^2.0.0",
     "handlebars": "^4.2.0",
-    "inquirer": "^6.5.1",
+    "inquirer": "^7.0.0",
     "metalsmith": "^2.3.0",
     "ora": "^3.4.0",
-    "typescript": "^3.6.2",
     "user-home": "^2.0.0"
   }
 }
