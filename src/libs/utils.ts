@@ -15,14 +15,14 @@ import Logger = require('./logger')
  * @returns
  */
 export function downLoadtempalte(template: string) {
-  const spinner = ora('downloading template')
+  const spinner = ora('downloading template').start()
   return new Promise((resolve, reject) => {
     const targetPath = path.join(
       userHome,
       '.charmingsong-vue-template',
       template.replace(/[\/:]/g, '-')
     )
-    spinner.start()
+
     gitDownload(`web-songsong/${template}`, targetPath, (err: any) => {
       spinner.stop()
       if (err) {
@@ -42,6 +42,7 @@ export function downLoadtempalte(template: string) {
  * @returns
  */
 export function otputTemplate(temsPath: string, metainfo: any) {
+  const spinner = ora('write in template').start()
   return new Promise((resolve, reject) => {
     Metalsmith(process.cwd())
       .metadata(metainfo)
@@ -61,22 +62,25 @@ export function otputTemplate(temsPath: string, metainfo: any) {
         if (err) {
           Logger.fatal(err)
         }
+        spinner.stop()
         resolve(true)
       })
   })
 }
 
 /**
- * 发送请求, 获取最新的mate
+ * 发送请求, 获取最新的meta
  *
  * @export
  * @param {string} url
  * @returns {*}
  */
 export function getMetaJson(url: string): any {
+  const spinner = ora('get meta info').start()
   return new Promise((resolve, reject) => {
     axios.get(url).then(res => {
-      resolve(res)
+      spinner.stop()
+      resolve(res.data)
     })
   })
 }

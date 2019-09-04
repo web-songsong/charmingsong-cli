@@ -7,7 +7,7 @@ import { handlePrompt } from './libs/inquirer'
 import { downLoadtempalte, otputTemplate, getMetaJson } from './libs/utils'
 import Logger = require('./libs/logger')
 
-const githubMateUrl =
+const githubMetaUrl =
   'https://raw.githubusercontent.com/web-songsong/charmingsong-cli/master_meta/meta.json'
 
 program.version(package_info.version, '-v, --version')
@@ -27,11 +27,13 @@ if (!process.argv.slice(2).length) {
 }
 
 async function main() {
-  const metaInit = await getMetaJson(githubMateUrl)
+  /* 获取meta */
+  const metaInit = await getMetaJson(githubMetaUrl)
   /* 获取meta信息 */
   const metaInfoBase: any = await handlePrompt(metaInit)
 
   /* 下载模板  */
+
   let temsPath = <string>await downLoadtempalte(metaInfoBase.template)
   temsPath && Logger.success('下载模板成功')
 
