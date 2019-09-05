@@ -2,7 +2,7 @@
   {
     "type": "list",
     "message": "选择模板(select template)",
-    "choices": ["cs-templates-ui"],
+    "choices": ["cs-templates-ui", "cs-templates-vueSsr"],
     "name": "template"
   },
   {
