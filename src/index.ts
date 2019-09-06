@@ -46,5 +46,5 @@ async function main() {
     const metaInfoTem: any = await handlePrompt(createMetaInfo)
     metaInfo = { ...metaInfo, metaInfoTem }
   }
-  ;(await otputTemplate(temsPath, metaInfo)) && Logger.success('下载模板成功')
+  ;(await otputTemplate(temsPath, metaInfo)) && Logger.success('写入模板成功')
 }
