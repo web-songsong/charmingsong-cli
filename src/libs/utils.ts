@@ -57,7 +57,6 @@ export function otputTemplate(temsPath: string, metainfo: any) {
               reg.exec(fileName)[0]
             )
           ) {
-            console.log('xxx')
             return
           }
           const str = files[fileName].contents.toString()
