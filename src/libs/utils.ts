@@ -51,6 +51,15 @@ export function otputTemplate(temsPath: string, metainfo: any) {
       .destination('.')
       .use((files: any, metalsmith: any, done: () => void) => {
         Object.keys(files).forEach(fileName => {
+          let reg: any = /\w+$/
+          if (
+            ['ico', 'jpg', 'png', 'gif', 'tif', 'psd', 'raw'].includes(
+              reg.exec(fileName)[0]
+            )
+          ) {
+            console.log('xxx')
+            return
+          }
           const str = files[fileName].contents.toString()
           files[fileName].contents = Buffer.from(
             Handlebars.compile(str)(metalsmith.metadata())
