@@ -8,7 +8,7 @@ import { downLoadtempalte, otputTemplate, getMetaJson } from './libs/utils'
 import Logger = require('./libs/logger')
 
 const githubMetaUrl =
-  'https://raw.githubusercontent.com/web-songsong/charmingsong-cli/master_meta/meta.json'
+  'https://gitee.com/websongsong/tool-uri/raw/master_meta/meta.json'
 
 program.version(package_info.version, '-v, --version')
 program
