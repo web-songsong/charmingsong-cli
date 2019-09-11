@@ -14,7 +14,8 @@
   {
     "type": "input",
     "message": "简介(description)",
-    "name": "description"
+    "name": "description",
+    "default": "my-project"
   },
   {
     "type": "input",
