@@ -1,6 +1,6 @@
 {
   "name": "charmingsong-cli",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "cli",
   "scripts": {
     "build": "tsc",
@@ -40,6 +40,7 @@
     "inquirer": "^7.0.0",
     "metalsmith": "^2.3.0",
     "ora": "^3.4.0",
+    "rmdir": "^1.2.0",
     "user-home": "^2.0.0"
   }
 }

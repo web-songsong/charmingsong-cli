@@ -5,6 +5,7 @@ import * as userHome from 'user-home'
 import * as Handlebars from 'handlebars'
 import * as Metalsmith from 'metalsmith'
 import axios from 'axios'
+import * as rmdir from 'rmdir'
 import Logger = require('./logger')
 
 /**
@@ -23,12 +24,15 @@ export function downLoadtempalte(template: string) {
       template.replace(/[\/:]/g, '-')
     )
 
-    gitDownload(`web-songsong/${template}`, targetPath, (err: any) => {
-      spinner.stop()
-      if (err) {
-        Logger.fatal(err)
-      }
-      resolve(targetPath)
+    rmdir(targetPath, (error: any) => {
+      if (error) reject(error)
+      gitDownload(`web-songsong/${template}`, targetPath, (err: any) => {
+        spinner.stop()
+        if (err) {
+          Logger.fatal(err)
+        }
+        resolve(targetPath)
+      })
     })
   })
 }
@@ -53,7 +57,7 @@ export function otputTemplate(temsPath: string, metainfo: any) {
         Object.keys(files).forEach(fileName => {
           let reg: any = /\w+$/
           if (
-            ['ico', 'jpg', 'png', 'gif', 'tif', 'psd', 'raw'].includes(
+            ['ico', 'jpg', 'png', 'gif', 'tif', 'psd', 'raw', 'vue'].includes(
               reg.exec(fileName)[0]
             )
           ) {
