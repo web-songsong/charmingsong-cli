@@ -30,7 +30,7 @@ async function main() {
   /* 获取meta */
   const metaInit = await getMetaJson(githubMetaUrl)
   /* 获取meta信息 */
-  const metaInfoBase: any = await handlePrompt(metaInit)
+  const metaInfoBase: any = await handlePrompt(metaInit) 
 
   /* 下载模板  */
 
