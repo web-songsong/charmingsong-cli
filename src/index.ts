@@ -1,50 +1,50 @@
 #!/usr/bin/env node
-import * as program from 'commander'
-import * as path from 'path'
-import { existsSync } from 'fs'
-import * as package_info from '../package.json'
-import { handlePrompt } from './libs/inquirer'
-import { downLoadtempalte, otputTemplate, getMetaJson } from './libs/utils'
-import Logger = require('./libs/logger')
 
-const githubMetaUrl =
-  'https://gitee.com/websongsong/tool-uri/raw/master_meta/meta.json'
+import { join } from 'path'
+import { existsSync, mkdirSync } from 'fs'
+import program from './libs/program'
+import Logger from './utils/logger'
+import { downTemplate, getMetaJson, writeTemplate } from './libs/tools'
+import { metaName } from '../cs-config.json'
+import prompt from './libs/inquirer'
 
-program.version(package_info.version, '-v, --version')
-program
-  .command('init [template] [other...]')
-  .action(function(template: any, otherD: any) {
-    if (otherD.length) return Logger.fatal('参数错误')
-    if (template) {
-    } else {
-      main()
-    }
-  })
+interface MetaInfoMust {
+  template: string
+
+  [prop: string]: any
+}
+
+/**
+ * command `init <app-name>`
+ * @param appName
+ */
+async function commandInit(appName: string) {
+  const targetDir = join(process.cwd(), appName)
+  existsSync(targetDir)
+    ? Logger.fatal('The current directory already exists --> %s ', appName)
+    : mkdirSync(targetDir)
+
+  const baseInfo: MetaInfoMust = await prompt(await getMetaJson())
+  const { template } = baseInfo
+  const templatePath = (await downTemplate(template)) as string
+  Logger.success('template download success！')
+
+  const templateMetaPath = join(templatePath, metaName)
+
+  const templateMetaInfo = existsSync(templateMetaPath)
+    ? await prompt(require(templateMetaPath))
+    : {}
+  const metaInfo = { ...baseInfo, ...templateMetaInfo }
+  await writeTemplate(templatePath, metaInfo, targetDir)
+  Logger.success('success ok!')
+  process.exit(1)
+}
+
+program.command('init <project-name>').action((appName: string) => {
+  commandInit(appName)
+})
 program.parse(process.argv)
 
 if (!process.argv.slice(2).length) {
   program.outputHelp()
-}
-
-async function main() {
-  /* 获取meta */
-  const metaInit = await getMetaJson(githubMetaUrl)
-  /* 获取meta信息 */
-  const metaInfoBase: any = await handlePrompt(metaInit) 
-
-  /* 下载模板  */
-
-  let temsPath = <string>await downLoadtempalte(metaInfoBase.template)
-  temsPath && Logger.success('下载模板成功')
-
-  let metaInfoTemPath = path.join(temsPath, 'meta.json')
-  let createMetaInfo = existsSync(metaInfoTemPath)
-    ? require(metaInfoTemPath)
-    : ''
-  let metaInfo: any = metaInfoBase
-  if (createMetaInfo) {
-    const metaInfoTem: any = await handlePrompt(createMetaInfo)
-    metaInfo = { ...metaInfo, metaInfoTem }
-  }
-  ;(await otputTemplate(temsPath, metaInfo)) && Logger.success('写入模板成功')
 }
