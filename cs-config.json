@@ -1,0 +1,7 @@
+{
+  "loggerPrefix": "charmingsong-cli",
+  "metaJson": "https://gitee.com/websongsong/tool-uri/raw/master_meta/meta.json",
+  "metaName": "meta.json",
+  "remoteUrl": "https://github.com/web-songsong",
+  "cliTemplate": ".charmingsong-cli-template"
+}
