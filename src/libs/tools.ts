@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import ora from 'ora'
 import gitDownload from 'download-git-repo'
@@ -65,10 +64,7 @@ export async function writeTemplate(
       .destination('.')
       .use((files: any, metalsmith: any, done: any) => {
         Object.keys(files).forEach((fileName) => {
-          const reg: any = /\w+$/
-          if (['ico', 'jpg', 'png', 'gif', 'tif', 'psd', 'raw', 'vue', 'tsx', 'jsx'].includes(reg.exec(
-            fileName,
-          )[0])) return
+          if (!(fileName === 'package.json')) return
           const str = files[fileName].contents.toString()
           files[fileName].contents = Buffer.from(
             Handlebars.compile(str)(metalsmith.metadata()),
